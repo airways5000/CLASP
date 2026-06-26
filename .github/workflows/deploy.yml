@@ -1,0 +1,26 @@
+name: Deploy Static Site
+
+on:
+  push:
+    branches:
+      - main # Triggers whenever you push code to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Inject API Key Secret
+        run: |
+          sed -i 's/REPLACE_ME_WITH_API_KEY/${{ secrets.API_KEY }}/g' index.html
+        # Replace 'YOUR_SECRET_NAME' with the exact name you used in GitHub Secrets
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
