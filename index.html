@@ -1528,7 +1528,7 @@ function outputTypePrompt(type, subject) {
 // ════════════════════════════════════════
 //let _apiKey = sessionStorage.getItem('clasp_api_key') || '';
 let _apiKey = "REPLACE_ME_WITH_API_KEY" ;
-  alert(_apiKey);
+ // alert(_apiKey);
 function saveApiKey() {
   const val = document.getElementById('api-key-input').value.trim();
   if (!val || val.length < 10) { showToast('⚠️ Please enter a valid API key.'); return; }
